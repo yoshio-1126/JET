@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#61baed">
+    <meta name="robots" content="noindex,nofollow">
+    <meta name="description" content="設備と内装をワンセットで。JETの仕事が広がる、小さな街へ。">
+    <title>JET｜設備と内装をワンセットで。</title>
+    <link rel="icon" href="assets/logo1.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="fonts/noto-sans-jp.css">
+    <link rel="stylesheet" href="fonts/reddit-sans.css">
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="app.js"></script>
+  </head>
+  <body>
+    <div id="loading" class="loading" role="status" aria-live="polite">
+      <span class="loading-wordmark" aria-hidden="true">JET</span>
+      <p id="loading-label">街を準備しています</p>
+      <div class="loading-track"><span id="loading-progress"></span></div>
+      <span id="loading-percent" class="loading-percent">0%</span>
+      <button id="retry" class="retry" type="button" hidden>もう一度読み込む</button>
+    </div>
+
+    <main id="viewport" aria-label="JETの街" aria-busy="true">
+      <div id="canvas">
+        <div id="world" aria-label="建物や人が広がるアイソメトリックの街"></div>
+        <div id="site-ui" inert>
+          <a class="brand" href="./" aria-label="JET トップ"><img src="assets/logo1.svg" alt="JET" width="53" height="30"></a>
+          <h1>設備と内装を<br>ワンセットで。</h1>
+          <nav class="site-nav" aria-label="メインナビゲーション">
+            <span>JETについて</span>
+            <button type="button" id="interior-menu" aria-haspopup="dialog">業務の紹介</button>
+            <span>業務実績</span>
+            <span>会社案内</span>
+            <span>採用情報</span>
+            <span>お問い合わせ</span>
+          </nav>
+        </div>
+      </div>
+
+      <section id="detail" class="detail" role="dialog" aria-modal="true" aria-labelledby="detail-title" aria-describedby="detail-copy" hidden inert>
+        <div class="detail-surface">
+          <p class="detail-eyebrow detail-item">Interior</p>
+          <h2 id="detail-title" class="detail-item" tabindex="-1">設備と内装を<br>ワンセットで。</h2>
+          <p id="detail-copy" class="detail-copy detail-item">設備工事という当社の主要業務の中で、大きな割合を占めているのが電気工事です。<br>小学校や駅の新築にともなう電気工事全般、街を照らすLED照明の設置、ホテルや老人ホームといった大型施設の電気工事など、ジャンルや規模は多岐にわたります。</p>
+          <button id="back" class="back detail-item" type="button"><img src="assets/group45.svg" width="26" height="11" alt=""><span>TOPへ戻る</span></button>
+        </div>
+      </section>
+    </main>
+    <noscript><p class="noscript">このページを表示するにはJavaScriptを有効にしてください。</p></noscript>
+  </body>
+</html>

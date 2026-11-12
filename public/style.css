@@ -1,0 +1,69 @@
+:root {
+  --blue: #61baed;
+  --ease: cubic-bezier(.22, 1, .36, 1);
+  --scale: 1;
+  --canvas-left: 0px;
+  --canvas-top: 0px;
+  color-scheme: light;
+  font-family: "Noto Sans JP Variable", "Noto Sans CJK JP", sans-serif;
+  background: var(--blue);
+  color: #202020;
+  font-synthesis: none;
+}
+* { box-sizing: border-box; }
+body { margin: 0; overflow: hidden; }
+button, a { -webkit-tap-highlight-color: transparent; }
+button { font: inherit; }
+button:focus-visible, a:focus-visible { outline: 3px solid #11679c; outline-offset: 6px; }
+button { cursor: pointer; }
+[hidden] { display: none !important; }
+#viewport { position: relative; height: 100svh; min-height: 320px; overflow: hidden; isolation: isolate; }
+#canvas { position: absolute; left: var(--canvas-left); top: var(--canvas-top); width: 1440px; height: 1000px; transform: scale(var(--scale)); transform-origin: 0 0; }
+#world { position: absolute; inset: 0; transform-origin: 0 0; pointer-events: none; }
+.layer { position: absolute; display: flex; align-items: center; justify-content: center; border: 0; padding: 0; margin: 0; background: transparent; opacity: 0; }
+.sprite { display: block; flex: none; position: relative; }
+.sprite > img { display: block; width: 100%; height: 100%; object-fit: cover; pointer-events: none; user-select: none; }
+.paper { opacity: 0; transform: translate(1550px, 895px); }
+.hotspot { pointer-events: auto; border-radius: 18px; }
+.hotspot .sprite { transition: filter .25s, translate .35s var(--ease); }
+.hotspot:hover .sprite { filter: brightness(1.06) drop-shadow(0 7px 4px #2482b22b); translate: 0 -5px; }
+.hotspot:focus-visible { outline-offset: -8px; }
+#site-ui { position: absolute; inset: 0; pointer-events: none; opacity: 0; color: #fff; }
+#site-ui a, #site-ui button { pointer-events: auto; }
+.brand { position: absolute; left: 16px; top: 16px; width: 53px; height: 30px; }
+.brand img { display: block; }
+h1 { position: absolute; left: 59px; top: 156px; margin: 0; font-size: 36px; line-height: 1.2; font-weight: 600; letter-spacing: 0; }
+.site-nav { position: absolute; left: 1301px; top: 35px; width: 198px; height: 242px; padding: 36px 28px; border-radius: 46px; background: #77d4ff; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; font-size: 14px; line-height: 22px; font-weight: 600; white-space: nowrap; }
+.site-nav button { border: 0; padding: 0; background: none; color: inherit; line-height: inherit; }
+.site-nav button:hover { text-decoration: underline; text-underline-offset: 4px; }
+.detail { position: absolute; z-index: 10; left: calc(var(--canvas-left) + 847px * var(--scale)); top: calc(var(--canvas-top) + 228px * var(--scale)); width: 509px; height: 536px; transform: scale(var(--scale)); transform-origin: 0 0; }
+.detail-surface { width: 100%; height: 100%; padding: 81px 73px 76px; border-radius: 49px; background: #fff; box-shadow: -10px 10px 0 var(--blue); }
+.detail-eyebrow { margin: 0 0 15px; color: var(--blue); font-family: "Reddit Sans", sans-serif; font-size: 16px; font-weight: 500; line-height: 1.2; }
+.detail h2 { margin: 0 0 32px; color: var(--blue); font-size: 34px; font-weight: 700; line-height: 1.2; letter-spacing: 0; outline: none; }
+.detail-copy { width: 354px; margin: 0 0 25px; font-size: 16px; font-weight: 400; line-height: 1.8; overflow-wrap: anywhere; }
+.detail-item { opacity: 0; }
+.back { display: flex; align-items: center; justify-content: space-between; gap: 24px; width: 149px; height: 36.866px; border: 0; border-radius: 56px; background: var(--blue); color: #fff; padding: 0 13px; white-space: nowrap; font-size: 13.752px; font-weight: 500; line-height: 1.2; transition: background .2s; }
+.back:hover { background: #399edc; }
+.back img { flex: none; }
+.loading { position: fixed; z-index: 100; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--blue); color: #fff; }
+.loading-wordmark { font-family: Arial, sans-serif; font-size: 56px; font-weight: 900; font-style: italic; letter-spacing: -5px; line-height: 1; margin-right: 5px; }
+.loading p { margin: 28px 0 20px; font-size: 12px; letter-spacing: .16em; }
+.loading-track { width: 160px; height: 2px; background: #ffffff40; overflow: hidden; }
+.loading-track span { display: block; height: 100%; width: 0; background: #fff; transition: width .22s ease; }
+.loading-percent { margin-top: 12px; font-family: "Reddit Sans", sans-serif; font-size: 11px; font-variant-numeric: tabular-nums; letter-spacing: .08em; }
+.retry { margin-top: 24px; border: 1px solid #ffffff88; border-radius: 24px; padding: 10px 20px; background: transparent; color: #fff; font-size: 13px; }
+.noscript { position: fixed; z-index: 101; inset: 0; margin: 0; display: grid; place-items: center; background: var(--blue); color: #fff; }
+@media (max-width: 700px) and (orientation: portrait) {
+  h1 { left: calc((24px - var(--canvas-left)) / var(--scale)); top: calc((96px - var(--canvas-top)) / var(--scale)); font-size: calc(26px / var(--scale)); }
+  .brand { left: calc((20px - var(--canvas-left)) / var(--scale)); top: calc((20px - var(--canvas-top)) / var(--scale)); transform: scale(calc(.85 / var(--scale))); transform-origin: 0 0; }
+  .site-nav { display: none; }
+  .detail { left: 24px; top: auto; bottom: max(24px, env(safe-area-inset-bottom)); width: calc(100% - 48px); height: auto; max-height: 65svh; transform: none; }
+  .detail-surface { padding: 30px 28px; border-radius: 30px; box-shadow: -7px 7px 0 var(--blue); max-height: 65svh; overflow-y: auto; overscroll-behavior: contain; }
+  .detail-eyebrow { font-size: 14px; margin-bottom: 12px; }
+  .detail h2 { font-size: 28px; margin-bottom: 22px; }
+  .detail-copy { width: auto; font-size: 14px; line-height: 1.8; margin-bottom: 22px; }
+  .back { min-height: 40px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+}

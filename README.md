@@ -1,0 +1,48 @@
+# JET animated HTML
+
+FigmaのFV（102:4990）とクリック後の画面（104:2）を実装したHTML/CSS/JavaScriptです。
+
+## 表示と動作
+
+- 全画像の読み込み・デコード完了まで進捗付きローディングを表示。失敗時は再試行できます。
+- 紙を右下から左上へ約30度の方向に1.45秒で移動。
+- 街のパーツはランダムな順序で19msずつ遅らせ、上からフェードイン。最終配置はFigmaの位置です。
+- `02_interior 5` を押すと1.3秒でズームし、続いてフレームを0.75秒で表示。内部要素は130msずつ順番に表示。
+- TOPボタンとEscapeキーで戻れます。キーボード操作・動きを減らす設定・スマートフォン表示に対応。
+- Figmaで本文が電気工事の説明になっているため、そのまま保持しています。
+- 他のコンテンツの遷移先は未提供です。業務の紹介と内装の建物が内装詳細を開きます。
+
+## 開発
+
+Node.js 22以降が必要です。
+
+```sh
+npm ci
+npm run fonts
+npm run assets
+```
+
+`.dev.vars` に `BASIC_AUTH_USER` と `BASIC_AUTH_PASSWORD` を設定し、`npm run dev` で起動します。認証情報をソースに含めないでください。
+
+```sh
+npm test
+npm run test:browser
+```
+
+ブラウザテストのChromiumパスは `playwright.config.js` で変更できます。
+
+## Cloudflare Workers
+
+自分のCloudflareアカウントに公開する場合は、Wranglerでログイン後に実行します。
+
+```sh
+npx wrangler secret put BASIC_AUTH_USER
+npx wrangler secret put BASIC_AUTH_PASSWORD
+npm run deploy
+```
+
+`run_worker_first: true` により、HTMLだけでなく画像・JS・フォントもBasic認証を通します。認証値が未設定の場合は503で拒否します。
+
+SitesのCloudflare Workersホスティングには `npm run build` の `dist/server/index.js` を使用します。画像は可逆WebPに変換してWorkerに格納し、一時的なFigma URLへの実行時アクセスをなくしています。認証情報はSitesの環境シークレットで設定します。
+
+FigmaのダウンロードURLは期限付きです。`scripts/figma-assets.json` は取得作業用で、ブラウザに配信しません。取得済みの原本は `public/assets/` に保存します。

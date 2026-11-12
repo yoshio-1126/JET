@@ -1,0 +1,186 @@
+{
+  "imgBgPaper": {
+    "path": "assets/bg-paper.png",
+    "source": "https://www.figma.com/api/mcp/asset/52e38655-155e-4642-bb1e-7f73d96026f3.png"
+  },
+  "img13Tower3": {
+    "path": "assets/13tower3.png",
+    "source": "https://www.figma.com/api/mcp/asset/b90ca00c-5418-4bb3-9c78-938325f7b89e.png"
+  },
+  "img02Interior5": {
+    "path": "assets/02interior5.png",
+    "source": "https://www.figma.com/api/mcp/asset/70252afc-9636-4727-b9d4-5b857e7e99ab.png"
+  },
+  "img10House4": {
+    "path": "assets/10house4.png",
+    "source": "https://www.figma.com/api/mcp/asset/7f9b8cf7-77fd-41e3-bd5f-edbef8c9282c.png"
+  },
+  "imgRoad031": {
+    "path": "assets/road031.png",
+    "source": "https://www.figma.com/api/mcp/asset/e68d713c-b321-4ec3-91de-f84e9c3001fa.png"
+  },
+  "img23TreeCube6": {
+    "path": "assets/23tree-cube6.png",
+    "source": "https://www.figma.com/api/mcp/asset/10034123-f094-42ac-ac39-1f3736aa151e.png"
+  },
+  "img06DesignRoom3": {
+    "path": "assets/06design-room3.png",
+    "source": "https://www.figma.com/api/mcp/asset/6f3c732a-337d-4592-ad52-b6168ebbd513.png"
+  },
+  "img09HousesParking3": {
+    "path": "assets/09houses-parking3.png",
+    "source": "https://www.figma.com/api/mcp/asset/6dfa78f7-d409-4de8-8a75-9dbdbdcdb3f8.png"
+  },
+  "img17BuildingShop3": {
+    "path": "assets/17building-shop3.png",
+    "source": "https://www.figma.com/api/mcp/asset/8dc166eb-cb99-40d9-af1b-53e9ab9152c0.png"
+  },
+  "img16Highrise3": {
+    "path": "assets/16highrise3.png",
+    "source": "https://www.figma.com/api/mcp/asset/42f4d013-ea11-47d3-a658-d7623726c5b3.png"
+  },
+  "img28PersonNw4": {
+    "path": "assets/28person-nw4.png",
+    "source": "https://www.figma.com/api/mcp/asset/6d65ad7f-e32a-45ae-9e2f-d2db563b3256.png"
+  },
+  "img26PersonSe1": {
+    "path": "assets/26person-se1.png",
+    "source": "https://www.figma.com/api/mcp/asset/de4b2548-a334-4970-bf9e-f935c86b9638.png"
+  },
+  "img05Office4": {
+    "path": "assets/05office4.png",
+    "source": "https://www.figma.com/api/mcp/asset/010e2929-ab63-4eb9-a098-570fff692ae6.png"
+  },
+  "img25PersonNe1": {
+    "path": "assets/25person-ne1.png",
+    "source": "https://www.figma.com/api/mcp/asset/2f08e78a-5a77-4d06-8c04-b2c1c69077bc.png"
+  },
+  "img24TreeCone5": {
+    "path": "assets/24tree-cone5.png",
+    "source": "https://www.figma.com/api/mcp/asset/5bcb0d6c-2684-4eab-8c99-57d10bfd0a9b.png"
+  },
+  "img3": {
+    "path": "assets/3.png",
+    "source": "https://www.figma.com/api/mcp/asset/b1f03f8d-bb41-45a9-a450-a2ac9ccb221d.png"
+  },
+  "img27PersonSw1": {
+    "path": "assets/27person-sw1.png",
+    "source": "https://www.figma.com/api/mcp/asset/4d497dad-f77f-4aab-bb9c-4889da88cf1c.png"
+  },
+  "img22Car5": {
+    "path": "assets/22car5.png",
+    "source": "https://www.figma.com/api/mcp/asset/73126bd2-0d3f-423d-a8f9-544acff64b56.png"
+  },
+  "img31": {
+    "path": "assets/31.png",
+    "source": "https://www.figma.com/api/mcp/asset/82897a7e-2bd6-41f3-bad5-1e7e1950d3fd.png"
+  },
+  "img41": {
+    "path": "assets/41.png",
+    "source": "https://www.figma.com/api/mcp/asset/c0123dcc-3c92-48f6-800f-6353f5c3b1b9.png"
+  },
+  "img21": {
+    "path": "assets/21.png",
+    "source": "https://www.figma.com/api/mcp/asset/342a2407-37ac-4d3b-adf3-f037186dd8b0.png"
+  },
+  "imgB1": {
+    "path": "assets/b1.png",
+    "source": "https://www.figma.com/api/mcp/asset/0aea7157-37d3-4919-b367-5c9c12fe0423.png"
+  },
+  "imgGroup421": {
+    "path": "assets/group421.png",
+    "source": "https://www.figma.com/api/mcp/asset/a9fa22a5-016e-4dd6-b6c1-2ef4f2157853.png"
+  },
+  "img1": {
+    "path": "assets/1.png",
+    "source": "https://www.figma.com/api/mcp/asset/d62e6d83-1190-4096-ba63-174ede3897a0.png"
+  },
+  "img18Jet3": {
+    "path": "assets/18jet3.png",
+    "source": "https://www.figma.com/api/mcp/asset/4eef32a7-2a7c-4097-becd-05bdec0c80bf.png"
+  },
+  "img01Electrical3": {
+    "path": "assets/01electrical3.png",
+    "source": "https://www.figma.com/api/mcp/asset/802b2b09-6835-4602-abce-47e5a8a33e04.png"
+  },
+  "img04Plumbing3": {
+    "path": "assets/04plumbing3.png",
+    "source": "https://www.figma.com/api/mcp/asset/2c1406ba-f33e-4a75-8ff9-3902e0a8dc96.png"
+  },
+  "img20Truck3": {
+    "path": "assets/20truck3.png",
+    "source": "https://www.figma.com/api/mcp/asset/437b8e43-1f9f-40ae-839f-5f5e7d8acb0e.png"
+  },
+  "img03Hvac3": {
+    "path": "assets/03hvac3.png",
+    "source": "https://www.figma.com/api/mcp/asset/0bfc197a-b5e1-4bf1-9005-60beb7a7495d.png"
+  },
+  "img21Bus3": {
+    "path": "assets/21bus3.png",
+    "source": "https://www.figma.com/api/mcp/asset/841430ed-3631-4179-bb90-d6f147864bb6.png"
+  },
+  "img07Shop4": {
+    "path": "assets/07shop4.png",
+    "source": "https://www.figma.com/api/mcp/asset/ddd08220-7911-4d0c-80ed-d4c487dd350b.png"
+  },
+  "img2": {
+    "path": "assets/2.png",
+    "source": "https://www.figma.com/api/mcp/asset/087da8c4-9acb-4c99-9375-dcf6235da626.png"
+  },
+  "img19Contact3": {
+    "path": "assets/19contact3.png",
+    "source": "https://www.figma.com/api/mcp/asset/7acdfd39-4a05-4b73-9d1c-14f51bbc581a.png"
+  },
+  "img14Balloon3": {
+    "path": "assets/14balloon3.png",
+    "source": "https://www.figma.com/api/mcp/asset/8d1ee53e-488e-4f1e-abf6-a2d530b2f2d3.png"
+  },
+  "img08SmallShop3": {
+    "path": "assets/08small-shop3.png",
+    "source": "https://www.figma.com/api/mcp/asset/abd3fa40-c6b8-486f-bb43-71794c754b50.png"
+  },
+  "img11ParkFountain3": {
+    "path": "assets/11park-fountain3.png",
+    "source": "https://www.figma.com/api/mcp/asset/e70bc87d-8e23-42f1-8506-18b6a13477a9.png"
+  },
+  "imgAirplane1": {
+    "path": "assets/airplane1.png",
+    "source": "https://www.figma.com/api/mcp/asset/2d4dc5d9-b28e-4111-96cb-f55ac49c2631.png"
+  },
+  "img031": {
+    "path": "assets/031.png",
+    "source": "https://www.figma.com/api/mcp/asset/6e05311a-62fe-4f6e-b18a-b07cab2915c0.png"
+  },
+  "img021": {
+    "path": "assets/021.png",
+    "source": "https://www.figma.com/api/mcp/asset/97e365d5-d7b0-4fc8-a8ba-e9cdf1fa584b.png"
+  },
+  "img041": {
+    "path": "assets/041.png",
+    "source": "https://www.figma.com/api/mcp/asset/7b5e3f2f-0aab-45a3-b611-3e06f0935844.png"
+  },
+  "img011": {
+    "path": "assets/011.png",
+    "source": "https://www.figma.com/api/mcp/asset/ff897ca4-a0d3-4a1c-ab3d-069a39fd7105.png"
+  },
+  "img32": {
+    "path": "assets/32.png",
+    "source": "https://www.figma.com/api/mcp/asset/6bba8c25-35c9-4092-8fc9-da606d82d6ae.png"
+  },
+  "img15Factory3": {
+    "path": "assets/15factory3.png",
+    "source": "https://www.figma.com/api/mcp/asset/8a78e9a6-754d-4ab2-9995-a3f89d2f781b.png"
+  },
+  "imgLogo1": {
+    "path": "assets/logo1.svg",
+    "source": "https://www.figma.com/api/mcp/asset/42fa5686-02e7-4682-ba0c-014911877753.svg"
+  },
+  "imgBg31": {
+    "path": "assets/bg31.png",
+    "source": "https://www.figma.com/api/mcp/asset/461355e3-8c3d-4193-9e9d-37c2c9d89552.png"
+  },
+  "imgGroup45": {
+    "path": "assets/group45.svg",
+    "source": "https://www.figma.com/api/mcp/asset/7ca81152-d934-4c88-b7d7-e40ba9de501e.svg"
+  }
+}
