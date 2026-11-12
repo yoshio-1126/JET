@@ -23,6 +23,7 @@ async function collect(directory, prefix = '') {
     if (relative.startsWith('assets/') && !required.has(relative)) continue;
     let bytes = await readFile(path);
     let contentType = mime[extname(path)];
+    if (!bytes.length) throw new Error(`Empty asset: ${path}`);
     if (extname(path) === '.png') {
       // Lossless encoding preserves every original Figma image pixel.
       const metadata = await sharp(bytes).metadata();

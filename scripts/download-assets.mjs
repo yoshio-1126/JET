@@ -19,8 +19,10 @@ await Promise.all(Array.from({ length: 4 }, async () => {
       // The hosted builder has Node but no curl executable.
       const response = await fetch(source, { signal: AbortSignal.timeout(60000) });
       if (!response.ok) throw new Error(`${path}: HTTP ${response.status}`);
-      await writeFile(`public/${path}`, new Uint8Array(await response.arrayBuffer()));
+      const bytes = new Uint8Array(await response.arrayBuffer());
+      if (!bytes.length) throw new Error(`${path}: empty HTTP ${response.status} response; type=${response.headers.get('content-type')}; length=${response.headers.get('content-length')}`);
+      await writeFile(`public/${path}`, bytes);
     });
-    console.log(`Downloaded ${path}`);
+    console.log(`Downloaded ${path} (${(await stat(`public/${path}`)).size} bytes)`);
   }
 }));
