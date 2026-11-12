@@ -1,4 +1,4 @@
-import { readFile, mkdir, stat } from 'node:fs/promises';
+import { readFile, mkdir, stat, writeFile } from 'node:fs/promises';
 import { spawn } from 'node:child_process';
 
 const manifest = JSON.parse(await readFile(new URL('./figma-assets.json', import.meta.url), 'utf8'));
@@ -14,6 +14,12 @@ await Promise.all(Array.from({ length: 4 }, async () => {
       child.stderr.on('data', (chunk) => { error += chunk; });
       child.on('exit', (code) => code === 0 ? resolve() : reject(new Error(`${path}: ${error}`)));
       child.on('error', reject);
+    }).catch(async (error) => {
+      if (error.code !== 'ENOENT') throw error;
+      // The hosted builder has Node but no curl executable.
+      const response = await fetch(source, { signal: AbortSignal.timeout(60000) });
+      if (!response.ok) throw new Error(`${path}: HTTP ${response.status}`);
+      await writeFile(`public/${path}`, new Uint8Array(await response.arrayBuffer()));
     });
     console.log(`Downloaded ${path}`);
   }
