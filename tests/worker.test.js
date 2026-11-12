@@ -6,7 +6,7 @@ const credential = (value) => `Basic ${btoa(value)}`;
 function environment(overrides = {}) {
   let requests = 0;
   return {
-    BASIC_AUTH_USER: 'MON', BASIC_AUTH_PASSWORD: 'JET',
+    BASIC_AUTH_USER: 'fixture-user', BASIC_AUTH_PASSWORD: 'fixture-password',
     ASSETS: { fetch: async () => { requests++; return new Response('protected asset'); } },
     get requests() { return requests; }, ...overrides,
   };
@@ -15,7 +15,7 @@ function environment(overrides = {}) {
 test('HTML, images and scripts all require Basic authentication before asset access', async () => {
   const env = environment();
   for (const path of ['/', '/assets/02interior5.png', '/app.js', '/scene.json']) {
-    for (const auth of [undefined, 'Bearer abc', 'Basic !!!!', credential('MON:wrong'), credential('mon:JET'), credential('MONJET')]) {
+    for (const auth of [undefined, 'Bearer abc', 'Basic !!!!', credential('fixture-user:wrong'), credential('wrong-user:fixture-password'), credential('missing-separator')]) {
       const response = await worker.fetch(new Request(`https://jet.example${path}`, { headers: auth ? { Authorization: auth } : {} }), env);
       assert.equal(response.status, 401);
       assert.match(response.headers.get('WWW-Authenticate'), /^Basic /);
@@ -27,7 +27,7 @@ test('HTML, images and scripts all require Basic authentication before asset acc
 
 test('valid credentials serve the requested asset with private caching', async () => {
   const env = environment();
-  const response = await worker.fetch(new Request('https://jet.example/assets/02interior5.png', { headers: { Authorization: credential('MON:JET') } }), env);
+  const response = await worker.fetch(new Request('https://jet.example/assets/02interior5.png', { headers: { Authorization: credential('fixture-user:fixture-password') } }), env);
   assert.equal(response.status, 200);
   assert.equal(await response.text(), 'protected asset');
   assert.equal(env.requests, 1);

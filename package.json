@@ -11,7 +11,7 @@
     "fonts": "node scripts/copy-fonts.mjs",
     "assets": "node scripts/download-assets.mjs",
     "test": "node --test tests/worker.test.js",
-    "test:browser": "playwright test",
+    "test:browser": "node --env-file-if-exists=.dev.vars node_modules/@playwright/test/cli.js test",
     "deploy": "wrangler deploy",
     "build": "node scripts/build.mjs"
   },
