@@ -8,7 +8,9 @@ await import('./import-assets.mjs');
 const scene = JSON.parse(await readFile('public/scene.json', 'utf8'));
 const imageVersion = JSON.parse(await readFile('image-version.json', 'utf8'));
 if (!/^[a-f0-9]{40}$/.test(imageVersion.commit)) throw new Error('Image source must be pinned to a full Git commit');
-const required = new Set([...scene.map((layer) => layer.src), 'assets/group45.svg']);
+const html = await readFile('public/index.html', 'utf8');
+const pageAssets = [...html.matchAll(/(?:src|href)="(assets\/[^"?]+)(?:\?[^\"]*)?"/g)].map((match) => match[1]);
+const required = new Set([...scene.map((layer) => layer.src), ...pageAssets]);
 let missing = false;
 for (const path of required) {
   try { if (!(await stat(`public/${path}`)).size) missing = true; } catch { missing = true; }
@@ -17,7 +19,7 @@ if (missing) await import('./download-assets.mjs');
 
 const files = {};
 const remoteImages = {};
-const mime = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.json': 'application/json; charset=utf-8', '.svg': 'image/svg+xml', '.woff2': 'font/woff2', '.txt': 'text/plain; charset=utf-8' };
+const mime = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.json': 'application/json; charset=utf-8', '.svg': 'image/svg+xml', '.jpg': 'image/jpeg', '.woff2': 'font/woff2', '.txt': 'text/plain; charset=utf-8' };
 async function collect(directory, prefix = '') {
   for (const entry of await readdir(directory, { withFileTypes: true })) {
     if (entry.name.startsWith('.')) continue;

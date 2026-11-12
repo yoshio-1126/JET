@@ -9,6 +9,9 @@ test('original assets load, city enters, zoom precedes the card, and back restor
   await page.goto('/');
   await ready(page);
   await expect(page.locator('.layer')).toHaveCount(85);
+  await expect(page.locator('#site-ui .brand')).toHaveCount(0);
+  await expect(page.locator('.site-nav')).toHaveCSS('background-color', 'rgb(255, 255, 255)');
+  await expect(page.locator('.site-nav')).toHaveCSS('color', 'rgb(21, 164, 235)');
   const geometry = await page.locator('.layer img').evaluateAll((images) => images.map((image) => ({
     loaded: image.complete && image.naturalWidth > 0,
     width: image.getBoundingClientRect().width,
@@ -22,7 +25,17 @@ test('original assets load, city enters, zoom precedes the card, and back restor
   await opened(page);
   await page.locator('#back').blur();
   await page.screenshot({ path: 'test-results/interior-desktop.png' });
-  await expect(page.locator('#world')).toHaveCSS('transform', /matrix\(2\.9614, 0, 0, 2\.9614, -1174\.09, -643\.081\)/);
+  await expect(page.locator('#world')).toHaveCSS('transform', /matrix\(2\.9614, 0, 0, 2\.9614, -1253\.09, -643\.081\)/);
+  expect(await page.locator('#detail').boundingBox()).toEqual({ x: 847, y: 76, width: 549, height: 872 });
+  const photo = await page.locator('.detail-photo').evaluate((image) => {
+    const box = image.getBoundingClientRect();
+    return { loaded: image.complete && image.naturalWidth === 880 && image.naturalHeight === 600, x: box.x, y: box.y, width: box.width, height: box.height };
+  });
+  expect(photo.loaded).toBe(true);
+  expect(photo.x).toBe(920);
+  expect(photo.y).toBeCloseTo(484, 0);
+  expect(photo.width).toBe(409);
+  expect(photo.height).toBe(279);
   await page.getByRole('button', { name: 'TOPへ戻る' }).click();
   await ready(page);
   await expect(page.locator('#detail')).toBeHidden();
@@ -61,9 +74,10 @@ test('mobile and reduced motion keep the card readable and keyboard return funct
   expect(box.x).toBeGreaterThanOrEqual(0);
   expect(box.x + box.width).toBeLessThanOrEqual(390);
   expect(box.y + box.height).toBeLessThanOrEqual(844);
-  await expect(page.getByRole('button', { name: 'TOPへ戻る' })).toBeInViewport();
   await page.locator('#back').blur();
   await page.screenshot({ path: 'test-results/interior-mobile.png' });
+  await page.getByRole('button', { name: 'TOPへ戻る' }).scrollIntoViewIfNeeded();
+  await expect(page.getByRole('button', { name: 'TOPへ戻る' })).toBeInViewport();
   await page.keyboard.press('Escape');
   await ready(page);
   await expect(page.locator('.hotspot')).toBeFocused();

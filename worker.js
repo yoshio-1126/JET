@@ -33,7 +33,8 @@ export default {
     if (difference) return challenge();
     const response = await env.ASSETS.fetch(request);
     const headers = new Headers(response.headers);
-    headers.set('Cache-Control', 'private, max-age=3600');
+    const mutable = /\.(?:html|css|js|json)$/.test(new URL(request.url).pathname) || new URL(request.url).pathname === '/';
+    headers.set('Cache-Control', mutable ? 'private, no-cache' : 'private, max-age=3600');
     headers.set('Vary', 'Authorization');
     headers.set('X-Content-Type-Options', 'nosniff');
     headers.set('X-Frame-Options', 'SAMEORIGIN');

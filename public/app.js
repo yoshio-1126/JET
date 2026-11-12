@@ -30,7 +30,7 @@ function resize() {
 function zoomTransform() {
   // The second Figma frame is an exact 2.9614× zoom of the same city.
   if (mobileQuery.matches) return 'translate(-805px, -673px) scale(2.65)';
-  return 'translate(-1174.088px, -643.081px) scale(2.961398)';
+  return 'translate(-1253.088px, -643.081px) scale(2.961398)';
 }
 
 function animate(element, frames, options = {}) {
@@ -63,7 +63,6 @@ function shuffle(items) {
 
 function buildCity(scene) {
   for (const layer of scene) {
-    if (layer.name === 'logo 1') continue; // The logo lives in the fixed UI.
     const interactive = layer.name === '02_interior 5';
     const element = document.createElement(interactive ? 'button' : 'div');
     element.className = `layer${layer.name === 'bg_paper' ? ' paper' : ''}${interactive ? ' hotspot' : ''}`;
@@ -119,10 +118,11 @@ async function start() {
   $('#loading-progress').style.width = '0%';
   try {
     if (!assets) {
-      const response = await fetch('scene.json');
+      const response = await fetch('scene.json?v=2');
       if (!response.ok) throw new Error('Scene failed to load');
       const scene = await response.json();
-      assets = [...new Set([...scene.map((layer) => layer.src), 'assets/group45.svg'])];
+      const contentAssets = [...document.querySelectorAll('img[src^="assets/"]')].map((image) => image.getAttribute('src'));
+      assets = [...new Set([...scene.map((layer) => layer.src), ...contentAssets])];
       buildCity(scene);
     }
     let complete = 0;
@@ -185,6 +185,7 @@ async function intro() {
 async function openDetail(origin = trigger) {
   if (state !== 'ready') return;
   state = 'opening';
+  detail.returnFocus = origin;
   root.dataset.state = state;
   const operation = ++opening;
   trigger.disabled = true;
@@ -211,8 +212,8 @@ async function openDetail(origin = trigger) {
   if (operation !== opening) return;
   state = 'detail';
   root.dataset.state = state;
-  $('#back').focus({ preventScroll: true });
-  detail.returnFocus = origin;
+  surface.scrollTop = 0;
+  $('#detail-title').focus({ preventScroll: true });
 }
 
 async function closeDetail() {
@@ -250,7 +251,7 @@ document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape') closeDetail();
   if (event.key === 'Tab' && state === 'detail') {
     event.preventDefault();
-    $('#back').focus({ preventScroll: true });
+    $('#back').focus();
   }
 });
 new ResizeObserver(resize).observe($('#viewport'));

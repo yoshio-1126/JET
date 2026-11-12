@@ -492,16 +492,6 @@
     "src": "assets/b1.png"
   },
   {
-    "id": "102:5047",
-    "name": "logo 1",
-    "x": 16.0,
-    "y": 16.0,
-    "width": 53.0,
-    "height": 30.0,
-    "opacity": 1,
-    "src": "assets/logo1.svg"
-  },
-  {
     "id": "102:5077",
     "name": "右に伸びる街灯と柔らかな影 2",
     "x": 262.0,
