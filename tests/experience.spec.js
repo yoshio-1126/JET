@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-const ready = (page) => expect(page.locator('html')).toHaveAttribute('data-state', 'ready');
+const ready = (page) => expect(page.locator('html')).toHaveAttribute('data-state', 'ready', { timeout: 30000 });
 const opened = (page) => expect(page.locator('html')).toHaveAttribute('data-state', 'detail');
 
 test('original assets load, city enters, zoom precedes the card, and back restores the city', async ({ page }) => {

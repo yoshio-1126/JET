@@ -43,7 +43,7 @@ npm run deploy
 
 `run_worker_first: true` により、HTMLだけでなく画像・JS・フォントもBasic認証を通します。認証値が未設定の場合は503で拒否します。
 
-SitesのCloudflare Workersホスティングには `npm run build` の `dist/server/index.js` を使用します。画像は可逆WebPに変換してWorkerに格納し、一時的なFigma URLへの実行時アクセスをなくしています。認証情報はSitesの環境シークレットで設定します。
+SitesのCloudflare Workersホスティングには `npm run build` の `dist/server/index.js` を使用します。画像原本は `image-version.json` のGitコミットに固定したGitHub URLからCloudflare経由で配信・キャッシュし、一時的なFigma URLへの実行時アクセスをなくしています。ブラウザの画像リクエストは同一サイトのBasic認証を通ります。認証情報をGitHubへのリクエストに転送しません。認証情報はSitesの環境シークレットで設定します。
 
 FigmaのダウンロードURLは期限付きです。`scripts/figma-assets.json` は取得作業用で、ブラウザに配信しません。取得済みの原本は `public/assets/` に保存します。
 
