@@ -29,7 +29,6 @@
   "homepage": "https://github.com/yoshio-1126/JET#readme",
   "devDependencies": {
     "@playwright/test": "^1.65.0",
-    "@sparticuz/chromium": "^153.0.0",
     "sharp": "^0.35.5",
     "wrangler": "^4.160.1"
   },

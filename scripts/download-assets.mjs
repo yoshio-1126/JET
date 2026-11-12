@@ -17,9 +17,14 @@ await Promise.all(Array.from({ length: 4 }, async () => {
     }).catch(async (error) => {
       if (error.code !== 'ENOENT') throw error;
       // The hosted builder has Node but no curl executable.
-      const response = await fetch(source, { signal: AbortSignal.timeout(60000) });
+      let response = await fetch(source, { signal: AbortSignal.timeout(60000) });
       if (!response.ok) throw new Error(`${path}: HTTP ${response.status}`);
-      const bytes = new Uint8Array(await response.arrayBuffer());
+      let bytes = new Uint8Array(await response.arrayBuffer());
+      if (!bytes.length && /\.(png|svg)$/.test(source)) {
+        response = await fetch(source.replace(/\.(png|svg)$/, ''), { signal: AbortSignal.timeout(60000) });
+        if (!response.ok) throw new Error(`${path}: HTTP ${response.status}`);
+        bytes = new Uint8Array(await response.arrayBuffer());
+      }
       if (!bytes.length) throw new Error(`${path}: empty HTTP ${response.status} response; type=${response.headers.get('content-type')}; length=${response.headers.get('content-length')}`);
       await writeFile(`public/${path}`, bytes);
     });

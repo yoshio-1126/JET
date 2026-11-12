@@ -4,6 +4,7 @@ import { gzipSync } from 'node:zlib';
 import sharp from 'sharp';
 
 await import('./copy-fonts.mjs');
+await import('./import-assets.mjs');
 const manifest = JSON.parse(await readFile('scripts/figma-assets.json', 'utf8'));
 const scene = JSON.parse(await readFile('public/scene.json', 'utf8'));
 const required = new Set([...scene.map((layer) => layer.src), 'assets/group45.svg']);

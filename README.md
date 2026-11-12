@@ -46,3 +46,5 @@ npm run deploy
 SitesのCloudflare Workersホスティングには `npm run build` の `dist/server/index.js` を使用します。画像は可逆WebPに変換してWorkerに格納し、一時的なFigma URLへの実行時アクセスをなくしています。認証情報はSitesの環境シークレットで設定します。
 
 FigmaのダウンロードURLは期限付きです。`scripts/figma-assets.json` は取得作業用で、ブラウザに配信しません。取得済みの原本は `public/assets/` に保存します。
+
+Figmaから書き出した画像をGitHubの `public/assets/` にアップロードする方法にも対応しています。Figmaのレイヤー名のファイル名はビルド時に対応する内部名へコピーされます。画像をひとまとめにしてサブフォルダに置くこともできます。ロゴと戻る矢印のSVGも必要です。
