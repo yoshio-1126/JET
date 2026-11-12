@@ -36,10 +36,11 @@ npm run test:browser
 自分のCloudflareアカウントに公開する場合は、Wranglerでログイン後に実行します。
 
 ```sh
-npx wrangler secret put BASIC_AUTH_USER
-npx wrangler secret put BASIC_AUTH_PASSWORD
-npm run deploy
+npx wrangler login
+npm run publish:cloudflare
 ```
+
+公開前に、除外済みの `.dev.vars` または環境変数へ `BASIC_AUTH_USER` と `BASIC_AUTH_PASSWORD` を設定してください。公開コマンドはWorkersへの配置、秘密情報の登録、HTML・JS・画像の未認証401／認証済み200の確認を行い、成功した `workers.dev` URLを表示します。秘密情報はソースやコマンド引数に含めません。
 
 `run_worker_first: true` により、HTMLだけでなく画像・JS・フォントもBasic認証を通します。認証値が未設定の場合は503で拒否します。
 

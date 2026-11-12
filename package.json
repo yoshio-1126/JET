@@ -13,6 +13,7 @@
     "test": "node --test tests/worker.test.js",
     "test:browser": "node --env-file-if-exists=.dev.vars node_modules/@playwright/test/cli.js test",
     "deploy": "wrangler deploy",
+    "publish:cloudflare": "node scripts/publish-cloudflare.mjs",
     "build": "node scripts/build.mjs"
   },
   "repository": {
